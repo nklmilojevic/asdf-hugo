@@ -39,6 +39,9 @@ asdf list-all hugo
 # Install specific version
 asdf install hugo latest
 
+# Install specific extended version (for Sass/SCSS support)
+asdf install hugo extended_X.Y.Z
+
 # Set a version globally (on your ~/.tool-versions file)
 asdf global hugo latest
 
