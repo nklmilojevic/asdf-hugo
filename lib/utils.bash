@@ -66,10 +66,11 @@ get_arch() {
 }
 
 download_release() {
-  local version filename url
+  local version version_path filename url
   version="$1"
+  version_path="${version//extended_/}"
   filename="$2"
-  url="$GH_REPO/releases/download/v${version}/hugo_${version}_$(get_platform)-$(get_arch).tar.gz"
+  url="$GH_REPO/releases/download/v${version_path}/hugo_${version}_$(get_platform)-$(get_arch).tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
