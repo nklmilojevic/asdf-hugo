@@ -25,8 +25,6 @@
 Plugin:
 
 ```shell
-asdf plugin add hugo
-# or
 asdf plugin add hugo https://github.com/nklmilojevic/asdf-hugo.git
 ```
 
