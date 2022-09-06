@@ -66,11 +66,19 @@ get_arch() {
 }
 
 download_release() {
-  local version version_path filename url
+  local version version_path filename url arch platform
   version="$1"
   version_path="${version//extended_/}"
   filename="$2"
-  url="$GH_REPO/releases/download/v${version_path}/hugo_${version}_$(get_platform)-$(get_arch).tar.gz"
+  platform="$(get_platform)"
+  case "${platform}" in
+  macOS) arch="universal" ;;
+  *)
+    arch="$(get_arch)"
+    ;;
+  esac
+
+  url="$GH_REPO/releases/download/v${version_path}/hugo_${version}_${platform}-${arch}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
