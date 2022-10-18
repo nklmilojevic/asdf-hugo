@@ -72,10 +72,12 @@ download_release() {
   filename="$2"
   platform="$(get_platform)"
   case "${platform}" in
-  macOS) arch="universal" ;;
+  macOS) 
+    arch="universal"
+    platform="darwin"
+    ;;
   *)
     arch="$(get_arch)"
-    platform="darwin"
     ;;
   esac
 
