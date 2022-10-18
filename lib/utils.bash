@@ -75,6 +75,7 @@ download_release() {
   macOS) arch="universal" ;;
   *)
     arch="$(get_arch)"
+    platform="darwin"
     ;;
   esac
 
