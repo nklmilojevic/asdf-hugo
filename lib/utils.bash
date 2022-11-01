@@ -72,7 +72,14 @@ download_release() {
   filename="$2"
   platform="$(get_platform)"
   case "${platform}" in
-  macOS) arch="universal" ;;
+  macOS)
+    version_minor="${version#*.}"
+    version_minor="${version_minor%.*}"
+    if [ $version_minor -ge 103 ]; then
+      platform="darwin"
+    fi
+    arch="universal"
+    ;;
   *)
     arch="$(get_arch)"
     ;;
