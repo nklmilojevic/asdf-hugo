@@ -70,6 +70,7 @@ download_release() {
   version="$1"
   version_path="${version//extended_/}"
   filename="$2"
+  arch="$(get_arch)"
   platform="$(get_platform)"
   case "${platform}" in
   macOS)
@@ -78,10 +79,10 @@ download_release() {
     if [ $version_minor -ge 103 ]; then
       platform="darwin"
     fi
-    arch="universal"
-    ;;
-  *)
-    arch="$(get_arch)"
+
+    if [ $version_minor -ge 102 ]; then
+      arch="universal"
+    fi
     ;;
   esac
 
